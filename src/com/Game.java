@@ -1,6 +1,7 @@
 package com;
 import com.card.deal.Deal;
 import com.card.deal.Deck;
+import com.card.Turn;
 import java.util.ArrayList;
 import java.util.List;
 public class Game {
@@ -10,9 +11,11 @@ public class Game {
 		List<Integer> thisDeck = deck.getDeck();
 		System.out.println(thisDeck);
 		Deal deal = new Deal(thisDeck);
-		System.out.println(deal.handOne());
-		System.out.println(deal.handTwo());
-		System.out.println(deal.discardPile());
+		List<Integer> handOne = deal.handOne();
+		List<Integer> handTwo = deal.handTwo();
+		List<Integer> discardPile = deal.discardPile();
 		System.out.print(deal.drawPile());
+//		Turn turn = new Turn(deal.handOne(), deal.handTwo(), deal.discardPile(), deal.drawPile());
+//		turn.run();
 }
 }

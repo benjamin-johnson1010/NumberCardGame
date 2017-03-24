@@ -1,4 +1,5 @@
 package com.card.deal;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 public class Deal {
@@ -20,7 +21,7 @@ public class Deal {
 		return mHandTwo;
 	}
 	public List<Integer> discardPile(){
-		mDiscard = new ArrayList<Integer> (mDeck.subList(10,11));
+		mHandTwo = new ArrayList<Integer> (mDeck.subList(10, 11));
 		return mDiscard;
 	}
 	public List<Integer> drawPile(){

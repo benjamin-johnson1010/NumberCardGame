@@ -16,7 +16,6 @@ public class Deck {
 			mDeck.add(i);
 		}
 		Collections.shuffle(mDeck);
-		System.out.println(mDeck);
 		return mDeck;	
 }
 }

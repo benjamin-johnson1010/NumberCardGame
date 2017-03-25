@@ -59,10 +59,22 @@ public void run() {
 			case "play":
 				System.out.println("in play");
 				playCard();
+				if(hand.size() <= 0){
+					if(!handOneTurn){
+						System.out.println("Player One wins");
+					}
+					else{
+						System.out.println("Player Two wins");
+					}
+				}
 				break;
 			case "draw":
 				System.out.println("in draw");
 				hand.add(mDrawPile.remove(0));
+				if(mDrawPile.size() < 2){
+					for(int i = mDiscardPile.size()-1; i < 2; i--)
+					mDrawPile.add(mDiscardPile.remove(i));
+				}
 				break;
 			case "show":
 				System.out.printf("Your Hand is: %s: ", hand);
@@ -88,8 +100,12 @@ private List<Integer> playCard() throws IOException{
 			if(card-1 == mDiscardPile.get(0) || card+1 == mDiscardPile.get(0)){
 			mDiscardPile.add(0,hand.remove(i));
 			}
+			else if(card == 1 && mDiscardPile.get(0) == 10 || card == 10 && mDiscardPile.get(0) == 1){
+					mDiscardPile.add(0,hand.remove(i));
+
+				}
 			else{
-				System.out.printf("The card %d does not go there", card);
+				System.out.printf("The card %d does not go there \n", card);
 				return hand;
 			}
 		}

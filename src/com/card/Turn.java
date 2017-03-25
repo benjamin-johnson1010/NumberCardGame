@@ -2,6 +2,7 @@ package com.card;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,10 @@ public Turn(List<Integer> handOne, List<Integer> handTwo, List<Integer> discardP
 	mHandDiscardPile = discardPile;
 	mHandDealPile = dealPile;
 	mReader = new BufferedReader(new InputStreamReader(System.in));
+	mMenu = new HashMap<String, String>();
 	mMenu.put("play", "Play a Card");
 	mMenu.put("draw", "Draw a Card");
+	mMenu.put("show", "Display Hand");
 }
 private String promptAction() throws IOException {
 	System.out.println("You have two options: \"Play\" or \"Draw\" \n");
@@ -33,6 +36,20 @@ private String promptAction() throws IOException {
 }
 public void run() {
 	String choice = "";
+	boolean handOneTurn = true;
+	List<Integer> hand;
+	do{
+		if(handOneTurn == true){
+			hand = mHandOne;
+			System.out.println("It is Player One's Turn \n");
+			handOneTurn = false;
+		}
+		else
+		{
+			hand = mHandTwo;
+			System.out.println("It is Player Two's Turn \n");
+			handOneTurn = true;
+		}
 	do{
 		try{
 			choice = promptAction();
@@ -43,6 +60,9 @@ public void run() {
 			case "draw":
 				System.out.println("in draw");
 				break;
+			case "show":
+				System.out.printf("Your Hand is: %s: ", hand);
+				break;
 			default:
 				System.out.printf("Unknown choice: '%s'. Try Again. \n\n\n", choice);
 			}
@@ -51,6 +71,9 @@ public void run() {
 			ioe.printStackTrace();
 		}
 	}
-		while(mHandOne.size() != 0 && mHandTwo.size() != 0);
-	}
+		while(mHandOne.size() != 0 && mHandTwo.size() != 0 && !choice.equals("draw"));
+	
+}
+while(mHandOne.size() != 0 && mHandTwo.size() != 0);
+}
 }

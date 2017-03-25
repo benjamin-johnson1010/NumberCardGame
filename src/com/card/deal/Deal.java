@@ -21,7 +21,7 @@ public class Deal {
 		return mHandTwo;
 	}
 	public List<Integer> discardPile(){
-		mHandTwo = new ArrayList<Integer> (mDeck.subList(10, 11));
+		mDiscard = new ArrayList<Integer> (mDeck.subList(10, 11));
 		return mDiscard;
 	}
 	public List<Integer> drawPile(){
